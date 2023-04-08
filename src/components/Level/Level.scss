@@ -1,0 +1,59 @@
+.level {
+  position: absolute;
+  left: 200px;
+  top: 100px;
+
+  &__back {
+    background: linear-gradient(to right, #9e4feb, #e58cf0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: #8e60c5 2.5px solid;
+  }
+  &__front {
+    border: #8e60c5 2.5px solid;
+    background-color: rgba(217, 217, 217, 0.4);
+  }
+  &__back-rectangle {
+    width: 344px;
+    height: 74px;
+    border-radius: 30px;
+  }
+  &__front-rectangle {
+    width: 323px;
+    height: 55px;
+    border-radius: 22px;
+    font-size: 36px;
+    text-indent: 90px;
+    color: #753abb;
+  }
+  &__back-ellipse {
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    top: -10px;
+    left: -20px;
+    border-radius: 50%;
+  }
+  &__front-ellipse {
+    font-size: 64px;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__points {
+    position: absolute;
+    right: 0;
+    bottom: -30px;
+    width: 138px;
+    height: 42px;
+    background: rgba(229, 140, 240, 0.91);
+    border-radius: 10px;
+    font-size: 32px;
+    z-index: -1;
+    text-align: center;
+  }
+}

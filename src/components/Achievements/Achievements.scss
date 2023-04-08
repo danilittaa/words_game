@@ -1,0 +1,31 @@
+.achievements {
+  width: 395px;
+  height: 440px;
+  position: absolute;
+  left: 172px;
+  bottom: 30px;
+  background: rgba(188, 140, 226, 0.4);
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__title {
+    font-size: 40px;
+    margin: 7px 0 15px;
+  }
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 78%;
+    height: 40px;
+    background: rgba(217, 217, 217, 0.38);
+    border-radius: 30px;
+    margin-bottom: 28px;
+    padding: 0 20px;
+    font-size: 24px;
+    &__left {
+      color: black;
+    }
+  }
+}

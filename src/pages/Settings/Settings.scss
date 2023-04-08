@@ -1,0 +1,50 @@
+.settings {
+  background-color: rgba(217, 217, 217, 0.1);
+  width: 1333px;
+  height: calc(100vh - 100px);
+  position: absolute;
+  right: 55px;
+  top: 50px;
+  border-radius: 50px;
+  &__sound {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+  }
+  &__exit {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__name {
+      margin-right: 20px;
+      color: #753abb;
+      font-size: 36px;
+    }
+  }
+  &__lang {
+    position: absolute;
+    left: calc(100vh - 88px - 255px);
+    top: 120px;
+    text-align: center;
+    font-size: 32px;
+    &__name {
+      margin-bottom: 10px;
+    }
+    &__flag {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 510px;
+
+      &__img {
+        width: 270px;
+        height: 270px;
+        border-radius: 50%;
+      }
+    }
+  }
+}
