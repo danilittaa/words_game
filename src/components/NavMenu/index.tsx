@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./NavMenu.scss";
 import NavMenuItem from "./NavMenuItem";
-import { INavMenuItem } from "../../types";
+import { INavMenuItem } from "types";
 
 const NavMenu: React.FC = () => {
   const navMenuItemUrl: Array<INavMenuItem> = [

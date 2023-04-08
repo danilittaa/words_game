@@ -1,6 +1,6 @@
 import React from "react";
 import { MaterialSymbol } from "react-material-symbols";
-import { INavMenuItem } from "../../../types";
+import { INavMenuItem } from "types";
 import { Link } from "react-router-dom";
 
 interface NavMenuItemProps {

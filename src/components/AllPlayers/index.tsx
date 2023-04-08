@@ -1,6 +1,6 @@
 import React from "react";
 import "./AllPlayers.scss";
-import PlayersItem from "../Players/PlayersItem";
+import PlayersItem from "components/Players/PlayersItem";
 
 const AllPlayers = () => {
   return (
