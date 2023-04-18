@@ -1,0 +1,62 @@
+.battle {
+  position: relative;
+  &__all-time {
+    position: absolute;
+    top: 50px;
+    left: 60px;
+    font-size: 24px;
+    color: #8e60c5;
+  }
+  &__task {
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    &__title {
+      margin: -10px 0 10px;
+    }
+    &__time {
+      font-size: 24px;
+      color: rgba(229, 140, 240, 0.91);
+      margin-bottom: 15px;
+    }
+    &__word {
+      background: rgba(217, 217, 217, 0.38);
+      border-radius: 30px;
+      width: 217px;
+      height: 51px;
+      padding: 0 10px;
+      margin-bottom: 30px;
+    }
+    &__options {
+      display: grid;
+      width: 482px;
+      height: 123px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      p {
+        width: 217px;
+        height: 51px;
+        margin: 0;
+        border-radius: 30px;
+        color: black;
+        &:nth-child(1) {
+          background: #caa2de;
+        }
+        &:nth-child(2) {
+          background: #b87fd6;
+        }
+        &:nth-child(3) {
+          background: #9f64be;
+        }
+        &:nth-child(4) {
+          background: #823aa7;
+        }
+      }
+    }
+  }
+}

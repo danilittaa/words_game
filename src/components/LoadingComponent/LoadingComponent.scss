@@ -1,0 +1,136 @@
+.loading {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__shapes {
+    position: relative;
+  }
+  &__shape {
+    position: absolute;
+    width: 20px;
+    height: 60px;
+    border-radius: 155px;
+    background: linear-gradient(
+      180deg,
+      rgba(247, 183, 186, 0.3) 0%,
+      rgba(172, 126, 196, 0.3) 100%
+    );
+  }
+}
+
+.shape_1 {
+  right: -10px;
+  bottom: 47px;
+  transform: perspective(90px) rotate(180deg) rotateX(-135deg);
+}
+
+.shape_2 {
+  right: -41px;
+  bottom: 39px;
+  transform: perspective(90px) rotate(205deg) rotateX(-135deg);
+}
+
+.shape_3 {
+  right: -66px;
+  bottom: 23px;
+  transform: perspective(90px) rotate(225deg) rotateX(-135deg);
+}
+
+.shape_4 {
+  right: -81px;
+  bottom: -2px;
+  transform: perspective(90px) rotate(245deg) rotateX(-135deg);
+}
+
+.shape_5 {
+  left: 66px;
+  top: -30px;
+  transform: perspective(90px) rotate(270deg) rotateX(-135deg);
+}
+
+.shape_6 {
+  right: -81px;
+  bottom: -58px;
+  transform: perspective(90px) rotate(292deg) rotateX(-135deg);
+}
+
+.shape_7 {
+  right: -66px;
+  bottom: -83px;
+  transform: perspective(90px) rotate(310deg) rotateX(-135deg);
+}
+
+.shape_8 {
+  right: -41px;
+  bottom: -100px;
+  transform: perspective(90px) rotate(335deg) rotateX(-135deg);
+}
+
+.shape_9 {
+  bottom: -107px;
+  right: -10px;
+  transform: perspective(90px) rotateX(-135deg);
+}
+
+.shape_10 {
+  right: 19px;
+  bottom: -101px;
+  transform: perspective(90px) rotate(23deg) rotateX(-135deg);
+}
+
+.shape_11 {
+  right: 45px;
+  bottom: -85px;
+  transform: perspective(90px) rotate(45deg) rotateX(-135deg);
+}
+
+.shape_12 {
+  right: 62px;
+  bottom: -60px;
+  transform: perspective(90px) rotate(68deg) rotateX(-135deg);
+}
+
+.shape_13 {
+  left: -87px;
+  top: -30px;
+  transform: perspective(90px) rotate(90deg) rotateX(-135deg);
+}
+
+.shape_14 {
+  left: -80px;
+  top: -60px;
+  transform: perspective(90px) rotate(110deg) rotateX(-135deg);
+}
+
+.shape_15 {
+  left: -66px;
+  top: -85px;
+  transform: perspective(90px) rotate(130deg) rotateX(-135deg);
+}
+
+.shape_16 {
+  left: -39px;
+  top: -102px;
+  transform: perspective(90px) rotate(155deg) rotateX(-135deg);
+}
+
+.selected-style {
+  background: linear-gradient(180deg, #f7b7ba 0%, #ac7ec4 100%);
+}
+
+// .circle {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   width: 120px;
+//   height: 120px;
+//   border-radius: 50%;
+//   background-color: #ac7ec4;
+// }

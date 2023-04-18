@@ -27,7 +27,7 @@
   }
   &__lang {
     position: absolute;
-    left: calc(100vh - 88px - 255px);
+    right: calc((100vw / 3) - 90px);
     top: 120px;
     text-align: center;
     font-size: 32px;

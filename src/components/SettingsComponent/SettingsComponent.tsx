@@ -1,7 +1,7 @@
 import React from "react";
 import "./Settings.scss";
 
-const Settings = () => {
+const SettingsComponent = () => {
   return (
     <div className="settings">
       <img
@@ -16,7 +16,6 @@ const Settings = () => {
       <div className="settings__lang">
         <p className="settings__lang__name">Ukrainian</p>
         <div className="settings__lang__flag">
-          {" "}
           <img src="/images/buttons/left.png" className="pointer" />
           <img
             src="/images/flags/ukraine.jpeg"
@@ -30,4 +29,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default SettingsComponent;

@@ -1,0 +1,34 @@
+.level-result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  font-size: 32px;
+  color: black;
+  text-align: center;
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  &__word {
+    border-radius: 30px;
+    width: 217px;
+    height: 51px;
+  }
+  &__enemy {
+    background: rgba(255, 69, 69, 0.38);
+  }
+  &__correct-option {
+    color: white;
+    margin: 75px 0;
+    & span {
+      text-transform: uppercase;
+    }
+  }
+  &__you {
+    background: rgba(165, 255, 109, 0.38);
+  }
+}
