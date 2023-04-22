@@ -30,4 +30,14 @@
       color: black;
     }
   }
+  @media screen and (max-width: 1250px) {
+    & {
+      right: 10px;
+    }
+  }
+  @media screen and (max-width: 1095px) {
+    & {
+      display: none;
+    }
+  }
 }

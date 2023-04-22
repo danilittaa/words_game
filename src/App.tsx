@@ -10,9 +10,6 @@ import AllWords from "pages/AllWords/AllWords";
 import Loading from "pages/Loading/Loading";
 import Results from "pages/Results/Results";
 import Battle from "pages/Battle/Battle";
-import Level from "components/Level/Level";
-import BattleComponent from "components/BattleComponent/BattleComponent";
-import LevelResult from "components/LevelResult/LevelResult";
 
 const App: React.FC = () => {
   const [isStared, setIsStarted] = useState<boolean>(false);

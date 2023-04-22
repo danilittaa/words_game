@@ -1,6 +1,6 @@
 .recent-words {
   width: 595px;
-  height: 423px;
+  height: 380px;
   border: #8e60c5 2.5px solid;
   border-radius: 24px;
   position: absolute;
@@ -31,5 +31,60 @@
     font-size: 29px;
     margin-top: 10px;
     cursor: pointer;
+  }
+  @media screen and (max-width: 1250px) {
+    & {
+      left: 100px;
+    }
+  }
+  @media screen and (max-width: 880px) {
+    & {
+      left: 50%;
+      transform: translate(calc(-50% + 44px), 0);
+    }
+  }
+  @media screen and (max-width: 710px) {
+    & {
+      transform: translate(-50%, 0);
+      bottom: 120px;
+    }
+  }
+  @media screen and (max-width: 630px) {
+    & {
+      bottom: 0;
+      top: 160px;
+      width: 520px;
+      height: 340px;
+      &__more {
+        display: none;
+      }
+    }
+  }
+  @media screen and (max-width: 550px) {
+    & {
+      font-size: 25px;
+      width: 340px;
+      height: 275px;
+      top: 50%;
+      transform: translate(-50%, calc(-50% - 50px));
+      &__title {
+        font-size: 35px;
+        margin-bottom: 30px;
+      }
+      &__item {
+        margin-bottom: -5px;
+      }
+    }
+  }
+  @media screen and (max-height: 760px) and (max-width: 550px) {
+    & {
+      height: 260px;
+    }
+    &__title {
+      margin-bottom: 15px;
+    }
+    &__item {
+      margin-bottom: -5px;
+    }
   }
 }

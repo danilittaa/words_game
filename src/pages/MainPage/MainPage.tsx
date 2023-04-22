@@ -12,7 +12,7 @@ interface MainPagePropps {
 
 const MainPage: FC<MainPagePropps> = ({ setIsStarted }) => {
   return (
-    <div>
+    <div className="main-page">
       <Level />
       <PlayButton setIsStarted={setIsStarted} />
       <Players />
