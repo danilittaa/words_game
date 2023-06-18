@@ -1,15 +1,18 @@
+@import "../../variables.scss";
 .all-words {
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 50%;
+  top: 50%;
+  transform: translate(calc(50% + 44px), -50%);
+  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: calc(100vw - 88px);
+  justify-content: center;
+
   &__title {
     text-transform: uppercase;
     font-size: 60px;
-    margin: 20px 0;
+    margin-top: -10px;
   }
   &__words {
     &__filter {
@@ -21,15 +24,15 @@
       margin: 0 0 0 30px;
     }
     &__container {
-      border: 3px solid #8e60c5;
+      border: 3px solid $violet;
       border-radius: 30px;
       width: 1195px;
       height: 500px;
       display: grid;
-      padding: 30px 30px;
       box-sizing: border-box;
       grid-template-columns: repeat(5, 1fr);
       grid-template-rows: repeat(10, 50px);
+      place-items: center;
     }
   }
   &__buttons {
@@ -44,6 +47,67 @@
       &__selected {
         background: rgba(217, 217, 217, 0.65);
       }
+    }
+  }
+  @media screen and (max-width: 1350px) {
+    &__words__container {
+      width: 1000px;
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  @media screen and (max-width: 1150px) {
+    &__words__container {
+      width: 780px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media screen and (max-width: 950px) {
+    &__words__container {
+      width: 500px;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(9, 50px);
+    }
+  }
+  @media screen and (max-width: 710px) {
+    & {
+      transform: translate(50%, -50%);
+      position: fixed;
+      &__title {
+        font-size: 50px;
+        margin-top: -50px;
+      }
+      &__words__container {
+        width: 500px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(9, 50px);
+      }
+    }
+  }
+  @media screen and (max-width: 540px) {
+    & {
+      &__title {
+        margin-top: 10px;
+        margin-bottom: -55px;
+        font-size: 40px;
+      }
+      &__words__container {
+        height: 650px;
+        grid-template-rows: repeat(12, 50px);
+      }
+      &__words {
+        transform: scale(0.8);
+      }
+    }
+  }
+  @media screen and (max-width: 425px) {
+    &__words__container {
+      width: 480px;
+    }
+  }
+  @media screen and (max-width: 408px) {
+    &__words__container {
+      width: 450px;
+      padding: 30px 10px;
     }
   }
 }

@@ -1,3 +1,4 @@
+@import "../../variables.scss";
 .level-result {
   display: flex;
   justify-content: center;
@@ -5,7 +6,7 @@
   width: 100vw;
   height: 100vh;
   font-size: 32px;
-  color: black;
+  color: $black;
   text-align: center;
   &__container {
     display: flex;

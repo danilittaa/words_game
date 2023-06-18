@@ -1,9 +1,10 @@
+@import "../../variables.scss";
 .play-btn {
   width: 160px;
   height: 160px;
   border-radius: 50%;
   background: linear-gradient(#fac0c0, #e58cf0);
-  border: #8e60c5 1.5px solid;
+  border: $violet 1.5px solid;
   position: absolute;
   right: 100px;
   bottom: 50px;
@@ -13,37 +14,20 @@
     top: 27px;
     left: 50px;
   }
-  @media screen and (max-height: 1238px) {
-    & {
-      bottom: 20px;
-    }
-  }
-
-  @media screen and (max-width: 970px) {
-    & {
-      right: 10px;
-    }
-  }
-  @media screen and (max-width: 880px) {
-    & {
-      top: 60px;
-    }
-  }
   @media screen and (max-width: 710px) {
     & {
-      top: 15px;
+      right: 40px;
+      bottom: 93px;
     }
   }
-  @media screen and (max-width: 630px) {
+  @media screen and (max-width: 666px) {
     & {
-      top: unset;
-      bottom: 100px;
-      right: 50px;
+      transform: scale(0.8);
     }
   }
-  @media screen and (max-height: 760px) {
+  @media screen and (max-width: 540px) {
     & {
-      bottom: 75px;
+      transform: scale(0.7);
     }
   }
 }

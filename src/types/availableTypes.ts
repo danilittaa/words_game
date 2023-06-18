@@ -1,0 +1,3 @@
+type AvailableResult = {
+  available: boolean;
+};

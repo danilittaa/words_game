@@ -1,23 +1,17 @@
-import React from "react";
 import { MaterialSymbol } from "react-material-symbols";
-import { INavMenuItem } from "types";
 import { Link } from "react-router-dom";
+import Context from "../../../../context";
+import { useContext } from "react";
 
 interface NavMenuItemProps {
-  url: INavMenuItem;
+  url: navMenuItemType;
   id: number;
-  selectedPage: number;
-  setSelectedPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const NavMenuItem: React.FC<NavMenuItemProps> = ({
-  url,
-  id,
-  selectedPage,
-  setSelectedPage,
-}) => {
+const NavMenuItem: React.FC<NavMenuItemProps> = ({ url, id }) => {
+  const { selectedPage } = useContext(Context);
   return (
-    <Link to={`/${url}`} onClick={() => setSelectedPage(id)}>
+    <Link to={`/${url}`}>
       <MaterialSymbol
         icon={url}
         size={47}

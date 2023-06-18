@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./AllWords.scss";
 import Word from "components/Word/Word";
 
@@ -40,6 +40,7 @@ const AllWordsComponent = () => {
                   : ""
               }`}
               onClick={() => setSelectedPage(index)}
+              key={index}
             >
               {index + 1}
             </p>

@@ -55,4 +55,42 @@
       right: 0;
     }
   }
+  @media screen and (max-width: 800px) {
+    &__enemy {
+      top: -50px;
+      right: -50px;
+    }
+    &__you {
+      left: -170px;
+      bottom: -50px;
+    }
+  }
+  @media screen and (max-width: 545px) {
+    &__enemy {
+      top: -30px;
+      right: 50%;
+      transform: translate(50%, 0);
+    }
+    &__you {
+      left: 50%;
+      bottom: -50px;
+      transform: translate(calc(-50% - 50px), 0); // without hints
+    }
+  }
+  @media screen and (max-width: 435px) {
+    &__enemy {
+      transform: translate(50%, 0) scale(0.9);
+    }
+    &__you {
+      transform: translate(calc(-50% - 50px), 0) scale(0.9);
+    }
+  }
+  @media screen and (max-width: 385px) {
+    &__enemy {
+      transform: translate(50%, 0) scale(0.8);
+    }
+    &__you {
+      transform: translate(calc(-50% - 50px), 0) scale(0.8);
+    }
+  }
 }

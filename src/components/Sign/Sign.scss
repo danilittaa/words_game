@@ -1,0 +1,91 @@
+@import "../../variables.scss";
+.sign {
+  &__wrapper {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.45);
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 20px;
+      h1 {
+        font-size: 40px;
+        text-transform: uppercase;
+        margin: 45px 0 15px;
+      }
+      input {
+        border: 0.96px solid $white;
+        border-radius: 19px;
+        background-color: transparent;
+        width: 380px;
+        height: 36px;
+        margin-bottom: 10px;
+        font-size: 20px;
+        text-indent: 20px;
+      }
+      button {
+        background: #d9d9d9;
+        border-radius: 30px;
+        width: 213px;
+        height: 34px;
+        text-transform: uppercase;
+        color: #5a3762;
+        margin-top: 20px;
+        &:hover {
+          filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.5));
+        }
+        &:active {
+          transform: translateY(2px);
+        }
+      }
+      p {
+        font-family: "Times New Roman", Times, serif;
+        margin-top: 7px;
+        &:hover {
+          color: rgba(219, 210, 210, 0.799);
+        }
+      }
+      label {
+        position: relative;
+      }
+      h6 {
+        position: absolute;
+        bottom: -32px;
+        right: 0;
+        font-size: 11px;
+        color: rgb(246, 49, 49);
+      }
+    }
+  }
+  &__sign_in {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 739px;
+    height: 400px;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(25px);
+    border-radius: 20px;
+  }
+  &__sign_up {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 739px;
+    height: 540px;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(25px);
+    border-radius: 20px;
+  }
+  &__exit {
+    position: absolute;
+    font-size: 25px;
+    right: 15px;
+    top: -3px;
+  }
+}

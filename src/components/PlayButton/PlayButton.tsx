@@ -1,19 +1,18 @@
 import React, { FC } from "react";
 import "./PlayButton.scss";
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "hook";
+import { createAnonymousUser } from "store/userSlice";
 
-interface PlayButtonProps {
-  setIsStarted: React.Dispatch<React.SetStateAction<boolean>>;
-}
+const PlayButton: FC = () => {
+  const dispatch = useAppDispatch();
 
-const PlayButton: FC<PlayButtonProps> = ({ setIsStarted }) => {
   return (
-    <Link
-      to="/loading"
-      className="play-btn pointer"
-      onClick={() => setIsStarted((prev) => true)}
-    >
-      <div className="play-btn__polygon">
+    <Link to="/home" className="play-btn pointer">
+      <div
+        className="play-btn__polygon"
+        onClick={() => dispatch(createAnonymousUser())}
+      >
         <img src="/images/buttons/Polygon.png" alt="" />
       </div>
     </Link>

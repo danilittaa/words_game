@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { FC, useState } from "react";
 import "./Word.scss";
 
 interface WordProps {
   front: string;
   back: string;
 }
-const Word: React.FC<WordProps> = ({ front, back }) => {
+const Word: FC<WordProps> = ({ front, back }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   return (
     <div

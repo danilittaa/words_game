@@ -1,21 +1,31 @@
+@import "../../variables.scss";
 .word {
   transform-style: preserve-3d;
   transition: all 0.8s ease;
-  display: flex;
-  align-items: center;
-  width: fit-content;
+
+  width: 160px;
+  // height: 45px;
+  position: relative;
+
   &__front,
   &__back {
+    position: absolute;
+    margin-top: 10px;
+
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 0);
     background: #caa2de;
     border-radius: 30px;
     padding: 0 10px;
-    color: black;
+    color: $black;
     backface-visibility: hidden;
     font-size: 25px;
   }
   &__back {
-    transform: rotateY(180deg);
     background: #9f64be;
+    left: 50%;
+    transform: rotateY(180deg) translate(50%, 0);
   }
 }
 

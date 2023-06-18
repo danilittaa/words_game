@@ -1,12 +1,8 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import "./ResultsComponent.scss";
 import { Link } from "react-router-dom";
 
-interface ResultsComponentProps {
-  setIsStarted: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const ResultsComponent: FC<ResultsComponentProps> = ({ setIsStarted }) => {
+const ResultsComponent: FC = () => {
   return (
     <div className="results">
       <div className="results__back">
@@ -46,8 +42,16 @@ const ResultsComponent: FC<ResultsComponentProps> = ({ setIsStarted }) => {
             </p>
             <p className="results__score__total">total: 1290</p>
           </div>
+          <div className="results__achievements">
+            <div className="results__achievements__name">
+              <p>learn 5 new words</p>
+              <p>+2</p>
+            </div>
+            <div className="results__achievements__points">3/5</div>
+            <div className="results__achievements__inner"></div>
+          </div>
           <div className="results__buttons">
-            <Link to="/home" onClick={() => setIsStarted(false)}>
+            <Link to="/home">
               <img
                 src="/images/buttons/left.svg"
                 alt="home button"

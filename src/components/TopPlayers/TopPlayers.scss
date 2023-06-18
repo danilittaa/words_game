@@ -1,0 +1,54 @@
+@import "../../variables.scss";
+.all-players {
+  position: absolute;
+  right: 100px;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: 400px;
+  height: 700px;
+  border: $violet 3px solid;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    font-size: 50px;
+    margin: 5px 0 25px;
+  }
+  &__players {
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 1130px) {
+    & {
+      top: unset;
+      bottom: 50%; //20px
+      left: 50%;
+      height: 350px;
+      transform: translate(calc(-50% + 44px), calc(50% + 200px));
+    }
+    .players__item {
+      margin-bottom: 12px;
+    }
+  }
+  @media screen and (max-width: 710px) {
+    & {
+      position: fixed;
+      bottom: 95px;
+      transform: translate(-50%, calc(50% - 170px));
+    }
+  }
+  @media screen and (max-width: 470px) {
+    & {
+      transform: translate(-50%, calc(50% - 170px)) scale(0.8);
+    }
+  }
+}

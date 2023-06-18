@@ -1,5 +1,6 @@
 .players {
-  width: 367px;
+  width: 27%;
+  // width: 367px;
   height: 420px;
   border: #8e60c5 2.5px solid;
   border-radius: 24px;
@@ -9,7 +10,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
   &__title {
     font-size: 38px;
     margin: 15px 0 20px;
@@ -30,12 +30,13 @@
       color: black;
     }
   }
+  // @media screen and (max-width: 1250px) {
+  //   & {
+  //     right: 10px;
+  //   }
+  // }
   @media screen and (max-width: 1250px) {
-    & {
-      right: 10px;
-    }
-  }
-  @media screen and (max-width: 1095px) {
+    // 1095
     & {
       display: none;
     }

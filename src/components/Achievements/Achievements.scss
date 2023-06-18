@@ -1,3 +1,4 @@
+@import "../../variables.scss";
 .achievements {
   width: 395px;
   height: 440px;
@@ -13,6 +14,7 @@
     font-size: 40px;
     margin: 7px 0 15px;
   }
+
   &__item {
     display: flex;
     justify-content: space-between;
@@ -25,12 +27,40 @@
     padding: 0 20px;
     font-size: 24px;
     &__left {
-      color: black;
+      color: $black;
     }
   }
+
   @media screen and (max-width: 1250px) {
     & {
-      left: 100px;
+      bottom: 50%;
+      transform: translate(0, calc(50% + 90px));
+    }
+  }
+  @media screen and (max-width: 1130px) {
+    & {
+      top: 50%; //30
+      left: 50%;
+      height: 340px;
+      transform: translate(calc(-50% + 44px), calc(-50% - 200px));
+      &__item {
+        margin-bottom: 12px;
+      }
+      &__img {
+        height: 340px;
+        width: 410px;
+      }
+    }
+  }
+  @media screen and (max-width: 710px) {
+    & {
+      position: fixed;
+      transform: translate(-50%, calc(-50% - 200px));
+    }
+  }
+  @media screen and (max-width: 470px) {
+    & {
+      transform: translate(-50%, calc(-50% - 200px)) scale(0.8);
     }
   }
 }

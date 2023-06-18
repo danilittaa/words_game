@@ -1,3 +1,4 @@
+@import "../../variables.scss";
 .results {
   display: flex;
   align-items: center;
@@ -7,7 +8,7 @@
 
   &__back {
     width: 735px;
-    height: 455px;
+    height: 550px;
     background: linear-gradient(180deg, #f1b2bb 0%, #b081c3 100%);
     border-radius: 50px;
     display: flex;
@@ -17,7 +18,7 @@
   }
   &__front {
     width: 610px;
-    height: 380px;
+    height: 475px;
     background: rgba(250, 249, 245, 0.5);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 41.641px;
@@ -31,14 +32,14 @@
     height: 66px;
     text-transform: uppercase;
     text-align: center;
-    color: #ffffff;
+    color: $white;
     background: #a672c2;
     border-radius: 26px;
   }
   &__score {
     display: flex;
     justify-content: space-between;
-    color: black;
+    color: $black;
     width: 90%;
     position: relative;
     margin: -40px 0 20px;
@@ -51,6 +52,46 @@
       bottom: 1px;
       font-size: 24px;
       color: rgba(0, 0, 0, 0.7);
+    }
+  }
+  &__achievements {
+    margin: 0 0 40px;
+    width: 90%;
+    height: 60px;
+    border: 2px solid $violet;
+    border-radius: 30px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 27px;
+    color: rgba(0, 0, 0, 0.7);
+    padding: 0 20px;
+    box-sizing: border-box;
+    &__name {
+      display: flex;
+      justify-content: space-between;
+      z-index: 100;
+      width: 55%;
+      & p:nth-child(2) {
+        color: $violet;
+      }
+    }
+    &__points {
+      color: rgba(255, 255, 255, 0.827);
+    }
+    &__inner {
+      position: absolute;
+      background: linear-gradient(
+        180deg,
+        rgba(229, 140, 240, 0.91) 0%,
+        rgba(229, 140, 240, 0) 100%
+      );
+      width: 40%;
+      height: 60px;
+      border-radius: 30px;
+      top: 0;
+      left: 0;
     }
   }
   &__buttons {
@@ -98,5 +139,14 @@
     top: -70px;
     transform: rotate(20deg);
     z-index: 0;
+  }
+  @media screen and (max-width: 1300px) {
+    transform: scale(0.8);
+  }
+  @media screen and (max-width: 900px) {
+    transform: scale(0.6);
+  }
+  @media screen and (max-width: 740px) {
+    transform: scale(0.5);
   }
 }

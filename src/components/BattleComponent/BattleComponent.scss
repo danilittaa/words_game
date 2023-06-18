@@ -1,3 +1,4 @@
+@import "../../variables.scss";
 .battle {
   position: relative;
   &__all-time {
@@ -5,7 +6,20 @@
     top: 50px;
     left: 60px;
     font-size: 24px;
-    color: #8e60c5;
+    color: $violet;
+    @media screen and (max-width: 800px) {
+      & {
+        top: -50px;
+        left: -50px;
+      }
+    }
+    @media screen and (max-width: 545px) {
+      & {
+        top: -80px;
+        left: unset;
+        right: 0;
+      }
+    }
   }
   &__task {
     font-size: 32px;
@@ -37,6 +51,7 @@
       width: 482px;
       height: 123px;
       grid-template-columns: repeat(2, 1fr);
+      place-items: center;
       gap: 10px;
       p {
         width: 217px;
@@ -55,6 +70,11 @@
         }
         &:nth-child(4) {
           background: #823aa7;
+        }
+      }
+      @media screen and (max-width: 385px) {
+        & {
+          transform: scale(0.9);
         }
       }
     }

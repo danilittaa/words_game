@@ -1,10 +1,15 @@
-import React from "react";
+import { FC } from "react";
 
-const RecentWordsItem = () => {
+interface RecentWordsItemProps {
+  word: Word;
+  translation: Translation;
+}
+
+const RecentWordsItem: FC<RecentWordsItemProps> = ({ word, translation }) => {
   return (
     <div className="recent-words__item">
-      <p className="recent-words__item__eng">comprise</p>
-      <p className="recent-words__item__ukr">складатись</p>
+      <p className="recent-words__item__eng">{word.text}</p>
+      <p className="recent-words__item__ukr">{translation.text}</p>
     </div>
   );
 };

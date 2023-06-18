@@ -1,10 +1,14 @@
-import React from "react";
+import { FC } from "react";
 
-const PlayersItem = () => {
+interface PlayersItemProps {
+  username: string;
+  exp: number;
+}
+const PlayersItem: FC<PlayersItemProps> = ({ username, exp }) => {
   return (
     <div className="players__item">
-      <p className="players__item__username">dana</p>
-      <p>1201</p>
+      <p className="players__item__username">{username}</p>
+      <p>{exp}</p>
     </div>
   );
 };

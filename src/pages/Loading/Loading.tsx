@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./Loading.scss";
 import LoadingComponent from "components/LoadingComponent/LoadingComponent";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,7 @@ const Loading = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-      navigate("/results"); //temporarily
+      navigate("/battle"); //temporarily
     }, 2000);
   }, []);
 
