@@ -13,7 +13,7 @@ const NavMenuItem: React.FC<NavMenuItemProps> = ({ url, id }) => {
   return (
     <Link to={`/${url}`}>
       <MaterialSymbol
-        icon={url}
+        icon={url || "home"}
         size={47}
         grade={-25}
         color="#53268D"

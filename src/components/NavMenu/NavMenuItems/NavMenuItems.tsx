@@ -3,7 +3,7 @@ import NavMenuItem from "./NavMenuItem/NavMenuItem";
 
 const NavMenuItems: FC = ({}) => {
   const navMenuItemUrl: Array<navMenuItemType> = [
-    "home",
+    "",
     "settings",
     "star",
     "book",

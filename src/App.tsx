@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.scss";
 import "react-material-symbols/dist/rounded.css";
+import "react-toastify/dist/ReactToastify.css";
 import MainPage from "./pages/MainPage";
 import { BrowserRouter, Route, Routes, useActionData } from "react-router-dom";
 import Settings from "./pages/Settings";
@@ -31,7 +32,7 @@ const App: React.FC = () => {
           }}
         >
           <Routes>
-            <Route path="home" element={<MainPage />} />
+            <Route path="/" element={<MainPage />} />
             <Route path="settings" element={<Settings />} />
             <Route path="star" element={<Rating />} />
             <Route path="book" element={<AllWords />} />

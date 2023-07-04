@@ -22,8 +22,12 @@ const RecentWords: FC = () => {
     <div className="recent-words">
       <p className="recent-words__title">Recent Words</p>
       {recentWords.length ? (
-        recentWords.map((item) => (
-          <RecentWordsItem word={item.word} translation={item.translation} />
+        recentWords.map((item, index) => (
+          <RecentWordsItem
+            word={item.word}
+            translation={item.translation}
+            key={index}
+          />
         ))
       ) : (
         <p className="recent-words__empty">No recent words yet</p>

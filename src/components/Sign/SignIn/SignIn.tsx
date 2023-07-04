@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { axiosWithoutAuth } from "axiosConfig";
 import { useAppDispatch } from "hook";
 import { addLocalStorage, fetchMe } from "store/userSlice";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 interface SignInProps {
   onCloseClick: () => void;
@@ -18,6 +20,7 @@ const SignIn: FC<SignInProps> = ({ onCloseClick, onRegisterClick }) => {
     reset,
   } = useForm<LogInFormType>({ mode: "onChange" });
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const onSubmitLogIn = async (values: LogInFormType) => {
     try {
@@ -26,6 +29,17 @@ const SignIn: FC<SignInProps> = ({ onCloseClick, onRegisterClick }) => {
       const data = response.data as Authorization;
       addLocalStorage(data);
       reset({ ...values });
+      toast("Login is successful", {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      navigate("/");
       onCloseClick();
       dispatch(fetchMe());
     } catch (error: any) {

@@ -19,6 +19,7 @@ const LoadingComponent = () => {
                 ? "selected-style"
                 : ""
             }`}
+            key={index}
           ></div>
         ))}
       </div>

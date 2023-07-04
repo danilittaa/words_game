@@ -8,7 +8,7 @@ const PlayButton: FC = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <Link to="/home" className="play-btn pointer">
+    <Link to="/" className="play-btn pointer">
       <div
         className="play-btn__polygon"
         onClick={() => dispatch(createAnonymousUser())}
