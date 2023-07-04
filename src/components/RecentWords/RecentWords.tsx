@@ -16,8 +16,6 @@ const RecentWords: FC = () => {
     fetchResentWords();
   }, []);
 
-  console.log(recentWords);
-
   return (
     <div className="recent-words">
       <p className="recent-words__title">Recent Words</p>
