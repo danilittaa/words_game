@@ -1,6 +1,40 @@
+import { FC, useEffect, useState } from "react";
 import "./BattleComponent.scss";
+import { axiosWithAuth } from "axiosConfig";
 
-const BattleComponent = () => {
+interface BattleComponentProps {
+  duelQuestionMessage: DuelQuestion | undefined;
+}
+
+const BattleComponent: FC<BattleComponentProps> = ({ duelQuestionMessage }) => {
+  const [selectedAnswerId, setSelectedAnswerId] = useState<number>();
+  const [isSelectAllowed, setIsSelectAllowed] = useState<boolean>(true);
+  const [timer, setTimer] = useState<number>(15);
+
+  const handleClick = (item: DuelQuestionChoice) => {
+    setSelectedAnswerId(item.id);
+    setIsSelectAllowed(false);
+  };
+
+  useEffect(() => {
+    if (selectedAnswerId) {
+      try {
+        axiosWithAuth.post("/duels/answer-question/", {
+          choice_id: selectedAnswerId,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  }, [selectedAnswerId]);
+
+  useEffect(() => {
+    const timerFunc = setTimeout(() => {
+      setTimer((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearTimeout(timerFunc);
+  }, [timer]);
   return (
     <>
       <div className="battle">
@@ -8,12 +42,26 @@ const BattleComponent = () => {
           <div className="battle__task__title">
             Choose the correct translation
           </div>
-          <div className="battle__task__time">9 seconds left</div>
-          <div className="battle__task__word">apple</div>
+          <div className="battle__task__time">{timer} seconds left</div>
+          <div className="battle__task__word">{duelQuestionMessage?.text}</div>
           <div className="battle__task__options">
-            <p>meow</p>
-            <p>meow</p> <p>meow</p>
-            <p>meow</p>
+            {duelQuestionMessage?.choices.map((item: DuelQuestionChoice) => (
+              <p
+                key={item.id}
+                onClick={() => isSelectAllowed && handleClick(item)}
+                className={`
+                  ${
+                    item.id === selectedAnswerId
+                      ? "battle__task__options__selected"
+                      : ""
+                  } ${
+                  item.text.length >= 10 ? "battle__task__options__long" : ""
+                } pointer
+                `}
+              >
+                {item.text}
+              </p>
+            ))}
           </div>
         </div>
       </div>

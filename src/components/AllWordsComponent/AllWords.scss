@@ -33,6 +33,12 @@
       grid-template-columns: repeat(5, 1fr);
       grid-template-rows: repeat(10, 50px);
       place-items: center;
+      &__empty {
+        font-size: 25px;
+        grid-column-start: 2;
+        grid-column-end: 4;
+        grid-row-start: 5;
+      }
     }
   }
   &__buttons {

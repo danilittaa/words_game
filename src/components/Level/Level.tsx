@@ -17,7 +17,7 @@ const Level: FC<LevelProps> = ({ isInRating }) => {
       </div>
       <div className="level__back-ellipse level__back">
         <div className="level__front-ellipse level__front">
-          {Math.round(user.exp / 100)}
+          {Math.round(user.exp / 100) + 1}
         </div>
       </div>
       <div className="level__points">lvl {user.exp}/100</div>

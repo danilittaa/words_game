@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { useAppDispatch } from "hook";
 import { createAnonymousUser, createUser } from "store/userSlice";
 import { axiosWithAuth } from "axiosConfig";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 interface SignUpProps {
   onLoginClick: () => void;
@@ -11,6 +13,7 @@ interface SignUpProps {
 }
 const SignUp: FC<SignUpProps> = ({ onCloseClick, onLoginClick }) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -29,6 +32,10 @@ const SignUp: FC<SignUpProps> = ({ onCloseClick, onLoginClick }) => {
         values.username,
         "username"
       );
+
+      if (Object.keys(errors).length !== 0) {
+        return;
+      }
 
       if (!emailAvailable) {
         setError("email", {
@@ -54,11 +61,24 @@ const SignUp: FC<SignUpProps> = ({ onCloseClick, onLoginClick }) => {
       }
       dispatch(createUser(values));
       reset({ ...values });
+      toast("Registration is successful", {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      navigate("/");
+
       onCloseClick();
     } catch (error) {
       console.log(error);
     }
   };
+
   const checkAvailability = async (
     value: string,
     property: "email" | "username"
@@ -73,23 +93,6 @@ const SignUp: FC<SignUpProps> = ({ onCloseClick, onLoginClick }) => {
       console.log(error);
     }
   };
-  // const debounce = (func: (...args: any[]) => void, delay: number) => {
-  //   let timeoutId: number;
-
-  //   return (...args: any[]) => {
-  //     clearTimeout(timeoutId);
-  //     timeoutId = setTimeout(() => {
-  //       func(...args);
-  //     }, delay);
-  //   };
-  // };
-  // const debounceCheckAvailability = debounce(
-  //   async (value: string, property: "email" | "username") => {
-  //     await checkAvailability(value, property);
-  //     trigger(property);
-  //   },
-  //   450
-  // );
 
   return (
     <div className="sign__wrapper">
@@ -103,9 +106,6 @@ const SignUp: FC<SignUpProps> = ({ onCloseClick, onLoginClick }) => {
               required: "Enter username",
               maxLength: { value: 150, message: "Max length is 150" },
             })}
-            // onChange={(e) =>
-            //   debounceCheckAvailability(e.target.value, "username")
-            // }
           />
           <h6>{errors.username?.message}</h6>
         </label>
@@ -122,7 +122,6 @@ const SignUp: FC<SignUpProps> = ({ onCloseClick, onLoginClick }) => {
                 message: "Invalid email address",
               },
             })}
-            // onChange={(e) => debounceCheckAvailability(e.target.value, "email")}
           />
           <h6>{errors.email?.message}</h6>
         </label>

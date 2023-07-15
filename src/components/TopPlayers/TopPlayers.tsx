@@ -25,7 +25,11 @@ const AllPlayers = () => {
       <p className="all-players__title">Top Players</p>
       <div className="all-players__players">
         {allPlayers.map((player) => (
-          <PlayersItem username={player.username} exp={player.exp} />
+          <PlayersItem
+            username={player.username}
+            exp={player.exp}
+            key={player.id}
+          />
         ))}
       </div>
     </div>

@@ -18,8 +18,15 @@
     border-radius: 30px;
     width: 217px;
     height: 51px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 25px;
   }
-  &__enemy {
+  &__long {
+    font-size: 25px;
+  }
+  &__wrong {
     background: rgba(255, 69, 69, 0.38);
   }
   &__correct-option {
@@ -29,7 +36,7 @@
       text-transform: uppercase;
     }
   }
-  &__you {
+  &__right {
     background: rgba(165, 255, 109, 0.38);
   }
 }

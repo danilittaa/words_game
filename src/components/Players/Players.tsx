@@ -22,8 +22,8 @@ const Players = () => {
   return (
     <div className="players">
       <p className="players__title">Best Players</p>
-      {bestPlayers.map((player) => (
-        <PlayersItem username={player.username} exp={player.exp} />
+      {bestPlayers.map((player, index) => (
+        <PlayersItem username={player.username} exp={player.exp} key={index} />
       ))}
     </div>
   );

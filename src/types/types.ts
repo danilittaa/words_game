@@ -1,1 +1,1 @@
-type navMenuItemType = "home" | "settings" | "star" | "book";
+type navMenuItemType = "" | "settings" | "star" | "book";

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./App.scss";
 import "react-material-symbols/dist/rounded.css";
+import "react-toastify/dist/ReactToastify.css";
 import MainPage from "./pages/MainPage";
 import { BrowserRouter, Route, Routes, useActionData } from "react-router-dom";
 import Settings from "./pages/Settings";
 import Rating from "./pages/Rating";
 import AllWords from "pages/AllWords/AllWords";
-import Loading from "pages/Loading/Loading";
 import Results from "pages/Results/Results";
 import Battle from "pages/Battle/Battle";
 import Contex from "./context";
@@ -31,12 +31,11 @@ const App: React.FC = () => {
           }}
         >
           <Routes>
-            <Route path="home" element={<MainPage />} />
+            <Route path="/" element={<MainPage />} />
             <Route path="settings" element={<Settings />} />
             <Route path="star" element={<Rating />} />
             <Route path="book" element={<AllWords />} />
-            <Route path="loading" element={<Loading />} />
-            <Route path="results" element={<Results />} />
+            {/* <Route path="results" element={<Results />} /> */}
             <Route path="battle" element={<Battle />}></Route>
           </Routes>
         </div>
