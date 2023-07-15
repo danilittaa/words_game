@@ -7,7 +7,6 @@ import { BrowserRouter, Route, Routes, useActionData } from "react-router-dom";
 import Settings from "./pages/Settings";
 import Rating from "./pages/Rating";
 import AllWords from "pages/AllWords/AllWords";
-import Loading from "pages/Loading/Loading";
 import Results from "pages/Results/Results";
 import Battle from "pages/Battle/Battle";
 import Contex from "./context";
@@ -36,8 +35,7 @@ const App: React.FC = () => {
             <Route path="settings" element={<Settings />} />
             <Route path="star" element={<Rating />} />
             <Route path="book" element={<AllWords />} />
-            <Route path="loading" element={<Loading />} />
-            <Route path="results" element={<Results />} />
+            {/* <Route path="results" element={<Results />} /> */}
             <Route path="battle" element={<Battle />}></Route>
           </Routes>
         </div>

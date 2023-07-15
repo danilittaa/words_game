@@ -1,8 +1,14 @@
 import { FC } from "react";
 import "./ResultsComponent.scss";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "hook";
 
-const ResultsComponent: FC = () => {
+interface ResultsComponentProps {
+  outcome: DuelOutcome;
+}
+
+const ResultsComponent: FC<ResultsComponentProps> = ({ outcome }) => {
+  const { user } = useAppSelector((store) => store.user);
   return (
     <div className="results">
       <div className="results__back">
@@ -34,24 +40,28 @@ const ResultsComponent: FC = () => {
           />
         </div>
         <div className="results__front">
-          <p className="results__result">you win!</p>
+          <p className="results__result">{outcome.outcome}</p>
           <div className="results__score">
             <p className="results__score__left">Your score:</p>
             <p className="results__score__right">
-              1190<span>+100</span>
+              {user.exp}
+              <span>+{outcome.exp_gained}</span>
             </p>
-            <p className="results__score__total">total: 1290</p>
+            <p className="results__score__total">total: {user.exp}</p>
+            {/* ?? */}
           </div>
           <div className="results__achievements">
             <div className="results__achievements__name">
-              <p>learn 5 new words</p>
-              <p>+2</p>
+              <p>words learned</p>
+              {/* <p>+{outcome.correct_answers}</p> */}
             </div>
-            <div className="results__achievements__points">3/5</div>
+            <div className="results__achievements__points">
+              {outcome.correct_answers}/{outcome.questions_number}
+            </div>
             <div className="results__achievements__inner"></div>
           </div>
           <div className="results__buttons">
-            <Link to="/home">
+            <Link to="/">
               <img
                 src="/images/buttons/left.svg"
                 alt="home button"

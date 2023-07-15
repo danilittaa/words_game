@@ -9,7 +9,7 @@ const AllWordsComponent = () => {
   const [recentWords, setResentWords] = useState<RecentWord[]>([]);
   const fetchResentWords = async () => {
     const response = await axiosWithAuth.get("/recent-words/", {
-      params: { page_size: 10, page: selectedPage + 1 }, //page_size - ???
+      params: { page_size: 5, page: selectedPage + 1 }, //page_size - ???
     });
     const results = response.data as RecentWordPage;
     setPageNum(results.count / results.results.length);

@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import "./LoadingComponent.scss";
+import { axiosWithAuth } from "axiosConfig";
+import { useNavigate } from "react-router-dom";
 
 const LoadingComponent = () => {
   const [time, setTime] = useState<number>(1);
+  const navigate = useNavigate();
   useEffect(() => {
     setTimeout(() => {
       setTime((prev) => (prev === 15 ? 1 : prev + 1));
