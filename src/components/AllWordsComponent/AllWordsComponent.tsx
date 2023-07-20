@@ -13,7 +13,7 @@ const AllWordsComponent = () => {
         params: { page_size: 50, page: pageNum },
       });
       const results = response.data as RecentWordPage;
-      setResentWords(results.results);
+      setResentWords([...recentWords, ...results.results]);
       setPageNum((prev) => prev + 1);
     } catch (error) {
       console.log(error);
