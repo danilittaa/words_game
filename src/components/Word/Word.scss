@@ -4,13 +4,17 @@
   transition: all 0.8s ease;
 
   width: 160px;
-  // height: 45px;
   position: relative;
+  margin-bottom: 50px;
 
   &__front,
   &__back {
     position: absolute;
+    display: flex;
+    align-items: center;
     margin-top: 10px;
+    white-space: nowrap;
+    height: 35px;
 
     left: 50%;
     top: 0;
@@ -21,6 +25,9 @@
     color: $black;
     backface-visibility: hidden;
     font-size: 25px;
+  }
+  &__long {
+    font-size: 17px;
   }
   &__back {
     background: #9f64be;

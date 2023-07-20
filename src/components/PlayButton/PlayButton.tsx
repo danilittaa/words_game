@@ -12,7 +12,7 @@ const PlayButton: FC = () => {
   const [isStarted, setIsStarted] = useState<boolean>(false);
 
   const handleOnClick = () => {
-    if (!user.email) {
+    if (!localStorage.getItem("accessToken")) {
       dispatch(createAnonymousUser());
     }
     setIsStarted(true);

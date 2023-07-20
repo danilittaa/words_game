@@ -6,7 +6,10 @@
     top: 50px;
     left: 60px;
     font-size: 24px;
-    color: $violet;
+    color: $white;
+    background-color: #823aa7;
+    padding: 5px 10px;
+    border-radius: 15px;
     @media screen and (max-width: 800px) {
       & {
         top: -50px;
@@ -59,21 +62,25 @@
       &__selected {
         border: 4px solid #fffdfd92;
       }
+      &__very_long {
+        font-size: 17px;
+      }
       &__long {
         font-size: 25px;
       }
+
       p {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 217px;
-        height: 51px;
         margin: 0;
+        height: 51px;
+        width: 217px;
         border-radius: 30px;
         color: black;
         box-sizing: border-box;
-        line-height: 25px;
-        overflow-wrap: break-word;
+        line-height: 23px;
+        padding: 0 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         &:nth-child(1) {
           background: #caa2de;
         }

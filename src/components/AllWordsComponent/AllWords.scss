@@ -31,13 +31,29 @@
       display: grid;
       box-sizing: border-box;
       grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: repeat(10, 50px);
       place-items: center;
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      &__more {
+        padding: 5px 10px;
+        border-radius: 20px;
+        grid-column: 1 / -1;
+        background-color: $violet;
+        margin: 25px 0;
+        text-decoration: underline;
+      }
       &__empty {
         font-size: 25px;
         grid-column-start: 2;
-        grid-column-end: 4;
-        grid-row-start: 5;
+        grid-column-end: 5;
+        grid-row-start: 1;
+      }
+      &__no_words {
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   }

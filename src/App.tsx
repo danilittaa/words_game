@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.scss";
 import "react-material-symbols/dist/rounded.css";
 import "react-toastify/dist/ReactToastify.css";
 import MainPage from "./pages/MainPage";
-import { BrowserRouter, Route, Routes, useActionData } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Settings from "./pages/Settings";
 import Rating from "./pages/Rating";
 import AllWords from "pages/AllWords/AllWords";
-import Results from "pages/Results/Results";
 import Battle from "pages/Battle/Battle";
 import Contex from "./context";
 import { useAppDispatch } from "hook";
@@ -35,7 +34,6 @@ const App: React.FC = () => {
             <Route path="settings" element={<Settings />} />
             <Route path="star" element={<Rating />} />
             <Route path="book" element={<AllWords />} />
-            {/* <Route path="results" element={<Results />} /> */}
             <Route path="battle" element={<Battle />}></Route>
           </Routes>
         </div>

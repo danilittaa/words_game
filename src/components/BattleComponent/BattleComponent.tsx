@@ -4,12 +4,16 @@ import { axiosWithAuth } from "axiosConfig";
 
 interface BattleComponentProps {
   duelQuestionMessage: DuelQuestion | undefined;
+  seconds: number;
 }
 
-const BattleComponent: FC<BattleComponentProps> = ({ duelQuestionMessage }) => {
+const BattleComponent: FC<BattleComponentProps> = ({
+  duelQuestionMessage,
+  seconds,
+}) => {
   const [selectedAnswerId, setSelectedAnswerId] = useState<number>();
   const [isSelectAllowed, setIsSelectAllowed] = useState<boolean>(true);
-  const [timer, setTimer] = useState<number>(15);
+  const [timer, setTimer] = useState<number>(seconds);
 
   const handleClick = (item: DuelQuestionChoice) => {
     setSelectedAnswerId(item.id);
@@ -50,14 +54,18 @@ const BattleComponent: FC<BattleComponentProps> = ({ duelQuestionMessage }) => {
                 key={item.id}
                 onClick={() => isSelectAllowed && handleClick(item)}
                 className={`
-                  ${
-                    item.id === selectedAnswerId
-                      ? "battle__task__options__selected"
-                      : ""
-                  } ${
-                  item.text.length >= 10 ? "battle__task__options__long" : ""
+              ${
+                item.id === selectedAnswerId
+                  ? "battle__task__options__selected"
+                  : ""
+              } ${
+                  item.text.length >= 15
+                    ? "battle__task__options__very_long"
+                    : item.text.length >= 10
+                    ? "battle__task__options__long"
+                    : ""
                 } pointer
-                `}
+            `}
               >
                 {item.text}
               </p>

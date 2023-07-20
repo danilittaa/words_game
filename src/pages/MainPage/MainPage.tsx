@@ -7,11 +7,15 @@ import "./MainPage.scss";
 import RecentWords from "../../components/RecentWords";
 import NavMenu from "components/NavMenu/NavMenu";
 import Context from "context";
+import { useAppDispatch } from "hook";
+import { fetchMe } from "store/userSlice";
 
 const MainPage: FC = () => {
   const { setSelectedPage } = useContext(Context);
+  const dispatch = useAppDispatch();
   useEffect(() => {
     setSelectedPage(0);
+    dispatch(fetchMe());
   }, []);
   return (
     <NavMenu>

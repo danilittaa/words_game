@@ -12,8 +12,12 @@ const Word: FC<WordProps> = ({ front, back }) => {
       className={`word pointer ${isFlipped ? "wordFlip" : ""}`}
       onClick={() => setIsFlipped(!isFlipped)}
     >
-      <p className="word__front ">{front}</p>
-      <p className="word__back">{back}</p>
+      <p className={`word__front ${front.length >= 10 ? "word__long" : ""}`}>
+        {front}
+      </p>
+      <p className={`word__back ${back.length >= 10 ? "word__long" : ""}`}>
+        {back}
+      </p>
     </div>
   );
 };

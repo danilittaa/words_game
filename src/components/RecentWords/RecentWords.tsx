@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react";
 import "./RecentWords.scss";
 import RecentWordsItem from "./RecentWordsItem";
 import { axiosWithAuth } from "axiosConfig";
+import { Link } from "react-router-dom";
 
 const RecentWords: FC = () => {
   const [recentWords, setResentWords] = useState<RecentWord[]>([]);
@@ -31,7 +32,11 @@ const RecentWords: FC = () => {
         <p className="recent-words__empty">No recent words yet</p>
       )}
 
-      {!!recentWords.length && <p className="recent-words__more">See All...</p>}
+      {!!recentWords.length && (
+        <Link to="/book" className="recent-words__more">
+          See All...
+        </Link>
+      )}
     </div>
   );
 };

@@ -7,11 +7,13 @@ import LoadingComponent from "components/LoadingComponent/LoadingComponent";
 import { axiosWithAuth } from "axiosConfig";
 import { useAppSelector } from "hook";
 import ResultsComponent from "components/ResultsComponent/ResultsComponent";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Battle = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [myHealth, setMyHealth] = useState<number>(100);
-  const [opponentHealth, setOpponentHealth] = useState<number>(100);
+  const [isFirstQuestion, setIsFirstQuestion] = useState<boolean>(true);
+  const [allTime, setAllTime] = useState<number>(0);
 
   const [duelMessage, setDuelMessage] = useState<Duel>();
   const [duelQuestionMessage, setDuelQuestionMessage] =
@@ -21,7 +23,9 @@ const Battle = () => {
   const [duelQuestionResult, setDuelQuestionResult] =
     useState<DuelQuestionResult>();
   const [duelOutCome, setDuelOutcome] = useState<DuelOutcome>();
+
   const { user } = useAppSelector((store) => store.user);
+  const navigator = useNavigate();
 
   useEffect(() => {
     const addToDuelQueue = async () => {
@@ -47,6 +51,7 @@ const Battle = () => {
               case "duel_question":
                 setDuelQuestionMessage(message.duel_question as DuelQuestion);
                 setDuelQuestionResult(undefined);
+                setIsFirstQuestion(false);
                 break;
               case "duel_opponent_choice":
                 setDuelOpponentChoice(
@@ -56,11 +61,7 @@ const Battle = () => {
               case "duel_question_result":
                 const res = message.duel_question_result as DuelQuestionResult;
                 setDuelQuestionResult(res);
-                if (!res.answers.me.correct) {
-                  setMyHealth((prev) => prev - 20);
-                }
-                if (!res.answers.opponent.correct)
-                  setOpponentHealth((prev) => prev - 20);
+
                 break;
               case "duel_outcome":
                 setDuelOutcome(message.duel_outcome as DuelOutcome);
@@ -73,12 +74,43 @@ const Battle = () => {
           };
         }
       } catch (error) {
-        console.error("Error adding user to duel queue:", error);
+        console.error("Error receiving message from the server:", error);
+        toast.error("Try later", {
+          position: "top-left",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+        setTimeout(() => {
+          navigator("/");
+        }, 5000);
       }
     };
 
     addToDuelQueue();
   }, []);
+
+  useEffect(() => {
+    const interval =
+      !duelOutCome &&
+      setInterval(() => {
+        setAllTime((prevTime) => prevTime + 1);
+      }, 1000);
+
+    return () => {
+      clearInterval(interval || 0);
+    };
+  }, []);
+
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  };
   return (
     <>
       {isLoading ? (
@@ -88,17 +120,24 @@ const Battle = () => {
           <User
             type="enemy"
             username={duelMessage?.opponent?.username || "Player"}
-            health={opponentHealth}
+            health={duelQuestionResult?.status.opponent.hp || 0}
           />
-          <User type="you" username={user.username} health={myHealth} />
-          <div className="battle__all-time">2:01</div>
+          <User
+            type="you"
+            username={user.username}
+            health={duelQuestionResult?.status.me.hp || 0}
+          />
+          <div className="battle__all-time">{formatTime(allTime)}</div>
 
           {duelOutCome ? (
             <ResultsComponent outcome={duelOutCome} />
           ) : duelQuestionResult ? (
             <LevelResult duelQuestionResult={duelQuestionResult} />
           ) : (
-            <BattleComponent duelQuestionMessage={duelQuestionMessage} />
+            <BattleComponent
+              duelQuestionMessage={duelQuestionMessage}
+              seconds={isFirstQuestion ? 10 : 7}
+            />
           )}
         </div>
       )}

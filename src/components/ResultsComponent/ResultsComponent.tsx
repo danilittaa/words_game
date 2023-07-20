@@ -47,12 +47,13 @@ const ResultsComponent: FC<ResultsComponentProps> = ({ outcome }) => {
               {user.exp}
               <span>+{outcome.exp_gained}</span>
             </p>
-            <p className="results__score__total">total: {user.exp}</p>
-            {/* ?? */}
+            <p className="results__score__total">
+              total: {user.exp + outcome.exp_gained}
+            </p>
           </div>
           <div className="results__achievements">
             <div className="results__achievements__name">
-              <p>words learned</p>
+              <p>words guessed</p>
               {/* <p>+{outcome.correct_answers}</p> */}
             </div>
             <div className="results__achievements__points">

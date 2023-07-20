@@ -17,7 +17,7 @@ const User: FC<UserProps> = ({ type, username, health }) => {
           <img
             className="user__photo"
             src="/images/additional/opponent.jpg"
-          ></img>{" "}
+          ></img>
         </>
       ) : (
         <div className="user__hints"></div>
@@ -27,7 +27,7 @@ const User: FC<UserProps> = ({ type, username, health }) => {
         <div className="user__health">
           <div
             className="user__health__inner"
-            style={{ width: health + "%" }}
+            style={{ width: health * 10 + "%" }}
           ></div>
           <div className="user__health__min user__health__num">1</div>
           <div className="user__health__max user__health__num">10</div>
