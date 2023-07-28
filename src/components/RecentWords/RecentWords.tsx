@@ -14,7 +14,9 @@ const RecentWords: FC = () => {
     setResentWords(results);
   };
   useEffect(() => {
-    fetchResentWords();
+    if (localStorage.getItem("accessToken")) {
+      fetchResentWords();
+    }
   }, []);
 
   return (

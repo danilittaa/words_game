@@ -80,7 +80,7 @@
       }
     }
     &__points {
-      color: rgba(255, 255, 255, 0.827);
+      color: black;
     }
     &__inner {
       position: absolute;
@@ -89,7 +89,7 @@
         rgba(229, 140, 240, 0.91) 0%,
         rgba(229, 140, 240, 0) 100%
       );
-      width: 40%;
+      width: 50%;
       height: 60px;
       border-radius: 30px;
       top: 0;
@@ -125,16 +125,16 @@
     z-index: 1;
   }
   &__star:nth-child(3) {
-    left: calc(50% - 205px);
-    top: -70px;
-    transform: rotate(-20deg);
-    z-index: 0;
-  }
-  &__star:nth-child(4) {
     left: calc(50% + 10px);
     top: -75px;
     transform: rotate(15deg);
     z-index: 1;
+  }
+  &__star:nth-child(4) {
+    left: calc(50% - 205px);
+    top: -70px;
+    transform: rotate(-20deg);
+    z-index: 0;
   }
   &__star:nth-child(5) {
     left: calc(50% + 85px);

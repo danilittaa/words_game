@@ -1,19 +1,21 @@
-import BattleComponent from "components/BattleComponent/BattleComponent";
-import LevelResult from "components/LevelResult/LevelResult";
+import BattleComponent from "components/BattleComponent";
+import LevelResult from "components/LevelResult";
 import User from "components/User/User";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import "./Battle.scss";
-import LoadingComponent from "components/LoadingComponent/LoadingComponent";
+import LoadingComponent from "components/LoadingComponent";
 import { axiosWithAuth } from "axiosConfig";
 import { useAppSelector } from "hook";
-import ResultsComponent from "components/ResultsComponent/ResultsComponent";
+import ResultsComponent from "components/ResultsComponent";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-const Battle = () => {
+const Battle: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isFirstQuestion, setIsFirstQuestion] = useState<boolean>(true);
   const [allTime, setAllTime] = useState<number>(0);
+  const [myHealth, setMyHealth] = useState<number>(10);
+  const [opponentHealth, setOpponentHealth] = useState<number>(10);
 
   const [duelMessage, setDuelMessage] = useState<Duel>();
   const [duelQuestionMessage, setDuelQuestionMessage] =
@@ -28,8 +30,12 @@ const Battle = () => {
   const navigator = useNavigate();
 
   useEffect(() => {
+    console.log("here");
+
     const addToDuelQueue = async () => {
       try {
+        console.log("heree");
+
         const response = await axiosWithAuth.post("/duels/");
         if (response.status === 202) {
           const socket = new WebSocket(
@@ -61,10 +67,14 @@ const Battle = () => {
               case "duel_question_result":
                 const res = message.duel_question_result as DuelQuestionResult;
                 setDuelQuestionResult(res);
+                setMyHealth(res.status.me.hp);
+                setOpponentHealth(res.status.opponent.hp);
 
                 break;
               case "duel_outcome":
-                setDuelOutcome(message.duel_outcome as DuelOutcome);
+                setTimeout(() => {
+                  setDuelOutcome(message.duel_outcome as DuelOutcome);
+                }, 2000);
                 break;
               default:
                 console.log("Error receiving the message from server");
@@ -90,7 +100,6 @@ const Battle = () => {
         }, 5000);
       }
     };
-
     addToDuelQueue();
   }, []);
 
@@ -104,7 +113,7 @@ const Battle = () => {
     return () => {
       clearInterval(interval || 0);
     };
-  }, []);
+  }, [duelOutCome]);
 
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
@@ -120,13 +129,9 @@ const Battle = () => {
           <User
             type="enemy"
             username={duelMessage?.opponent?.username || "Player"}
-            health={duelQuestionResult?.status.opponent.hp || 0}
+            health={opponentHealth}
           />
-          <User
-            type="you"
-            username={user.username}
-            health={duelQuestionResult?.status.me.hp || 0}
-          />
+          <User type="you" username={user.username} health={myHealth} />
           <div className="battle__all-time">{formatTime(allTime)}</div>
 
           {duelOutCome ? (

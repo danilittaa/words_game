@@ -1,6 +1,6 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import "./ResultsComponent.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAppSelector } from "hook";
 
 interface ResultsComponentProps {
@@ -9,36 +9,42 @@ interface ResultsComponentProps {
 
 const ResultsComponent: FC<ResultsComponentProps> = ({ outcome }) => {
   const { user } = useAppSelector((store) => store.user);
+  const [stars, setStars] = useState<number>(0);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (outcome.outcome === "victory") {
+      switch (outcome.correct_answers) {
+        case 5:
+          setStars(5);
+          break;
+        case 4:
+          setStars(3);
+          break;
+        case 3:
+          setStars(3);
+          break;
+        case 2:
+          setStars(3);
+          break;
+        case 1:
+          setStars(1);
+          break;
+      }
+    }
+  }, [outcome]);
+
   return (
     <div className="results">
       <div className="results__back">
-        <div>
+        {[...Array(stars)].map((_, index) => (
           <img
             src="/images/additional/star.svg"
             alt="star"
             className="results__star"
+            key={index}
           />
-          <img
-            src="/images/additional/star.svg"
-            alt="star"
-            className="results__star"
-          />
-          <img
-            src="/images/additional/star.svg"
-            alt="star"
-            className="results__star"
-          />
-          <img
-            src="/images/additional/star.svg"
-            alt="star"
-            className="results__star"
-          />
-          <img
-            src="/images/additional/star.svg"
-            alt="star"
-            className="results__star"
-          />
-        </div>
+        ))}
         <div className="results__front">
           <p className="results__result">{outcome.outcome}</p>
           <div className="results__score">
@@ -54,12 +60,18 @@ const ResultsComponent: FC<ResultsComponentProps> = ({ outcome }) => {
           <div className="results__achievements">
             <div className="results__achievements__name">
               <p>words guessed</p>
-              {/* <p>+{outcome.correct_answers}</p> */}
             </div>
             <div className="results__achievements__points">
               {outcome.correct_answers}/{outcome.questions_number}
             </div>
-            <div className="results__achievements__inner"></div>
+            <div
+              className="results__achievements__inner"
+              style={{
+                width:
+                  (outcome.correct_answers * 100) / outcome.questions_number +
+                  "%",
+              }}
+            ></div>
           </div>
           <div className="results__buttons">
             <Link to="/">
@@ -69,8 +81,14 @@ const ResultsComponent: FC<ResultsComponentProps> = ({ outcome }) => {
                 className="results__buttons__button"
               />
             </Link>
-            <div className="">мау</div>
-            <div>
+            <div
+              onClick={() => {
+                navigate("/");
+                setTimeout(() => {
+                  navigate("/battle");
+                }, 100);
+              }}
+            >
               <img
                 src="/images/buttons/right.svg"
                 alt="next button"

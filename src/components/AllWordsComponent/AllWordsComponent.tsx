@@ -17,7 +17,7 @@ const AllWordsComponent = () => {
       setPageNum((prev) => prev + 1);
     } catch (error) {
       console.log(error);
-      toast.error("There is no more words", {
+      toast.error("There is no words", {
         position: "top-left",
         autoClose: 4000,
         hideProgressBar: false,
@@ -31,7 +31,9 @@ const AllWordsComponent = () => {
   };
 
   useEffect(() => {
-    fetchRecentWords();
+    if (localStorage.getItem("accessToken")) {
+      fetchRecentWords();
+    }
   }, []);
   return (
     <div className="all-words">

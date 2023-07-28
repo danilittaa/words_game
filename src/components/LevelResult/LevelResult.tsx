@@ -7,15 +7,15 @@ interface LevelResultProps {
 
 const LevelResult: FC<LevelResultProps> = ({ duelQuestionResult }) => {
   const opponentChoice =
-    duelQuestionResult.answers.opponent.choice?.text || "???";
-  const myChoice = duelQuestionResult.answers.me?.choice?.text || "???";
+    duelQuestionResult.answers?.opponent?.choice?.text || "???";
+  const myChoice = duelQuestionResult.answers?.me?.choice?.text || "???";
 
   return (
     <div className="level-result">
       <div className="level-result__container">
         <div
           className={`level-result__${
-            duelQuestionResult.answers.opponent?.correct ? "right" : "wrong"
+            duelQuestionResult.answers?.opponent?.correct ? "right" : "wrong"
           } level-result__word ${
             opponentChoice.length >= 10 ? "level-result__long" : ""
           }`}
@@ -32,7 +32,7 @@ const LevelResult: FC<LevelResultProps> = ({ duelQuestionResult }) => {
         </div>
         <div
           className={`level-result__${
-            duelQuestionResult.answers.me?.correct ? "right" : "wrong"
+            duelQuestionResult.answers?.me?.correct ? "right" : "wrong"
           } level-result__word ${
             opponentChoice.length >= 10 ? "level-result__long" : ""
           }`}
