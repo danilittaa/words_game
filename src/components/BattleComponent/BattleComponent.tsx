@@ -12,12 +12,10 @@ const BattleComponent: FC<BattleComponentProps> = ({
   seconds,
 }) => {
   const [selectedAnswerId, setSelectedAnswerId] = useState<number>();
-  const [isSelectAllowed, setIsSelectAllowed] = useState<boolean>(true);
   const [timer, setTimer] = useState<number>(seconds);
 
   const handleClick = (item: DuelQuestionChoice) => {
     setSelectedAnswerId(item.id);
-    setIsSelectAllowed(false);
   };
 
   useEffect(() => {
@@ -52,7 +50,7 @@ const BattleComponent: FC<BattleComponentProps> = ({
             {duelQuestionMessage?.choices.map((item: DuelQuestionChoice) => (
               <p
                 key={item.id}
-                onClick={() => isSelectAllowed && handleClick(item)}
+                onClick={() => handleClick(item)}
                 className={`
               ${
                 item.id === selectedAnswerId
