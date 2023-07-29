@@ -1,6 +1,6 @@
 import BattleComponent from "components/BattleComponent";
 import LevelResult from "components/LevelResult";
-import User from "components/User/User";
+import User from "components/User";
 import { FC, useEffect, useState } from "react";
 import "./Battle.scss";
 import LoadingComponent from "components/LoadingComponent";
@@ -9,6 +9,7 @@ import { useAppSelector } from "hook";
 import ResultsComponent from "components/ResultsComponent";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { WEBSOCKET_URL } from "../../constants";
 
 const Battle: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -30,16 +31,12 @@ const Battle: FC = () => {
   const navigator = useNavigate();
 
   useEffect(() => {
-    console.log("here");
-
     const addToDuelQueue = async () => {
       try {
-        console.log("heree");
-
         const response = await axiosWithAuth.post("/duels/");
         if (response.status === 202) {
           const socket = new WebSocket(
-            `ws://localhost:10000/duels/updates/?access_token=${localStorage.getItem(
+            ` ${WEBSOCKET_URL}duels/updates/?access_token=${localStorage.getItem(
               "accessToken"
             )}`
           );

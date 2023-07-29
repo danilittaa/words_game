@@ -1,10 +1,11 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+import { API_URL } from "./constants";
 
 const createAxiosInstance = (
   useAuthorizationHeader: boolean
 ): AxiosInstance => {
   const config: AxiosRequestConfig = {
-    baseURL: "http://localhost:10000/",
+    baseURL: API_URL,
     headers: { "ngrok-skip-browser-warning": "true" },
   };
 
@@ -34,10 +35,9 @@ const createAxiosInstance = (
             console.log("Refresh token not found");
             return;
           } else {
-            const response = await axios.post(
-              "http://localhost:10000/auth/refresh/",
-              { refresh: refreshToken }
-            );
+            const response = await axios.post(`${API_URL}auth/refresh/`, {
+              refresh: refreshToken,
+            });
             console.log("TUTTT", response.data);
 
             localStorage.setItem("accessToken", response.data.access);
