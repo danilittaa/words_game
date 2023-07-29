@@ -51,14 +51,7 @@ export const fetchMe = createAsyncThunk<User | undefined, undefined, {}>(
       const response = await axiosWithAuth.get("users/me/");
       return response.data as User;
     } catch (error: any) {
-      if (error.response && error.response.status === 401) {
-        const response = await axiosWithoutAuth.post("auth/refresh/", {
-          refresh: localStorage.getItem("refreshToken"),
-        });
-        updateLocalStorage(response.data.auth);
-        const response2 = await axiosWithAuth.get("users/me/");
-        return response2.data as User;
-      }
+      console.log(error);
     }
   }
 );

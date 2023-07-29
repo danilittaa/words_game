@@ -9,7 +9,7 @@ const AllPlayers = () => {
   const fetchPlayers = async () => {
     try {
       const response = await axiosWithoutAuth.get("/users/best-players/", {
-        params: { page: 1, page_size: 100 },
+        params: { page: 1, page_size: 1000 },
       });
       const data = response.data as BestPlayerPage;
       setAllPlayers((prev) => [...prev, ...data.results]);

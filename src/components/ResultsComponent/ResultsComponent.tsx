@@ -14,7 +14,11 @@ const ResultsComponent: FC<ResultsComponentProps> = ({ outcome }) => {
 
   useEffect(() => {
     if (outcome.outcome === "victory") {
-      switch (outcome.correct_answers) {
+      const starsNum = Math.round(
+        (outcome.correct_answers * 5) / outcome.questions_number
+      );
+
+      switch (starsNum) {
         case 5:
           setStars(5);
           break;
@@ -25,7 +29,7 @@ const ResultsComponent: FC<ResultsComponentProps> = ({ outcome }) => {
           setStars(3);
           break;
         case 2:
-          setStars(3);
+          setStars(1);
           break;
         case 1:
           setStars(1);
