@@ -4,7 +4,12 @@ import { useState } from "react";
 import SignIn from "components/Sign/SignIn/SignIn";
 import SignUp from "components/Sign/SignUp/SignUp";
 import { axiosWithAuth } from "axiosConfig";
-import { deleteLocalStorage, fetchMe, logOut } from "store/userSlice";
+import {
+  deleteLocalStorage,
+  fetchMe,
+  logOut,
+  updateSoundEffects,
+} from "store/userSlice";
 
 const SettingsComponent = () => {
   const { user } = useAppSelector((store) => store.user);
@@ -31,9 +36,14 @@ const SettingsComponent = () => {
   return (
     <div className="settings">
       <img
-        src="images/buttons/sound.png"
+        src={`images/buttons/${
+          user.preferences.sound_effects ? "no-" : ""
+        }sound.png`}
         alt="sound"
         className="settings__sound pointer"
+        onClick={() =>
+          dispatch(updateSoundEffects(!user.preferences.sound_effects))
+        }
       />
       <div className="settings__exit">
         <p className="settings__exit__name">

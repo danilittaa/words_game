@@ -15,14 +15,6 @@
     flex-direction: column;
   }
   &__word {
-    // border-radius: 30px;
-    // width: 217px;
-    // height: 51px;
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
-    // line-height: 25px;
-
     margin: 0;
     height: 51px;
     width: 217px;
@@ -34,6 +26,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  &__very_long {
+    font-size: 17px;
   }
   &__long {
     font-size: 25px;

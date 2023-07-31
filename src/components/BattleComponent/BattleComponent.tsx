@@ -1,6 +1,8 @@
 import { FC, useEffect, useState } from "react";
 import "./BattleComponent.scss";
 import { axiosWithAuth } from "axiosConfig";
+import useSound from "use-sound";
+import { useAppSelector } from "hook";
 
 interface BattleComponentProps {
   duelQuestionMessage: DuelQuestion | undefined;
@@ -11,8 +13,15 @@ const BattleComponent: FC<BattleComponentProps> = ({
   duelQuestionMessage,
   seconds,
 }) => {
+  const { user } = useAppSelector((store) => store.user);
   const [selectedAnswerId, setSelectedAnswerId] = useState<number>();
   const [timer, setTimer] = useState<number>(seconds);
+  const [play] = useSound(
+    user.preferences.sound_effects ? "/sounds/3sec-left.wav" : ""
+  );
+  const [playRes] = useSound(
+    user.preferences.sound_effects ? "/sounds/round-res.wav" : ""
+  );
 
   const handleClick = (item: DuelQuestionChoice) => {
     setSelectedAnswerId(item.id);
@@ -31,6 +40,12 @@ const BattleComponent: FC<BattleComponentProps> = ({
   }, [selectedAnswerId]);
 
   useEffect(() => {
+    if (timer === 2) {
+      play();
+    }
+    if (timer === 0) {
+      playRes();
+    }
     const timerFunc = setTimeout(() => {
       setTimer((prev) => prev - 1);
     }, 1000);

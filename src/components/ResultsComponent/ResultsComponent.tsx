@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react";
 import "./ResultsComponent.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppSelector } from "hook";
+import useSound from "use-sound";
 
 interface ResultsComponentProps {
   outcome: DuelOutcome;
@@ -10,6 +11,10 @@ interface ResultsComponentProps {
 const ResultsComponent: FC<ResultsComponentProps> = ({ outcome }) => {
   const { user } = useAppSelector((store) => store.user);
   const [stars, setStars] = useState<number>(0);
+  const [play] = useSound(
+    user.preferences.sound_effects ? "/sounds/button-click.wav" : ""
+  );
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -78,7 +83,7 @@ const ResultsComponent: FC<ResultsComponentProps> = ({ outcome }) => {
             ></div>
           </div>
           <div className="results__buttons">
-            <Link to="/">
+            <Link to="/" onClick={() => play()}>
               <img
                 src="/images/buttons/left.svg"
                 alt="home button"
@@ -88,6 +93,7 @@ const ResultsComponent: FC<ResultsComponentProps> = ({ outcome }) => {
             <div
               onClick={() => {
                 navigate("/");
+                play();
                 setTimeout(() => {
                   navigate("/battle");
                 }, 100);

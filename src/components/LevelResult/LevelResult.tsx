@@ -17,7 +17,11 @@ const LevelResult: FC<LevelResultProps> = ({ duelQuestionResult }) => {
           className={`level-result__${
             duelQuestionResult.answers?.opponent?.correct ? "right" : "wrong"
           } level-result__word ${
-            opponentChoice.length >= 10 ? "level-result__long" : ""
+            opponentChoice.length >= 15
+              ? "level-result__very_long"
+              : opponentChoice.length >= 10
+              ? "level-result__long"
+              : ""
           }`}
         >
           {opponentChoice}

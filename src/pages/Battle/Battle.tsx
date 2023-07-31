@@ -10,8 +10,13 @@ import ResultsComponent from "components/ResultsComponent";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { WEBSOCKET_URL } from "../../constants";
+import useSound from "use-sound";
+import { PlayFunction } from "use-sound/dist/types";
 
 const Battle: FC = () => {
+  const { user } = useAppSelector((store) => store.user);
+  const navigator = useNavigate();
+
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isFirstQuestion, setIsFirstQuestion] = useState<boolean>(true);
   const [allTime, setAllTime] = useState<number>(0);
@@ -27,8 +32,12 @@ const Battle: FC = () => {
     useState<DuelQuestionResult>();
   const [duelOutCome, setDuelOutcome] = useState<DuelOutcome>();
 
-  const { user } = useAppSelector((store) => store.user);
-  const navigator = useNavigate();
+  const [playWin] = useSound(
+    user.preferences.sound_effects ? "/sounds/win.wav" : ""
+  );
+  const [playLoose] = useSound(
+    user.preferences.sound_effects ? "/sounds/loose.wav" : ""
+  );
 
   useEffect(() => {
     const addToDuelQueue = async () => {
@@ -69,9 +78,20 @@ const Battle: FC = () => {
 
                 break;
               case "duel_outcome":
+                let play: PlayFunction;
+                if (message.duel_outcome.outcome === "victory") {
+                  console.log("win");
+                  play = playWin;
+                }
+                if (message.duel_outcome.outcome === "defeat") {
+                  console.log("loose");
+                  play = playLoose;
+                }
                 setTimeout(() => {
                   setDuelOutcome(message.duel_outcome as DuelOutcome);
+                  play();
                 }, 2000);
+
                 break;
               default:
                 console.log("Error receiving the message from server");

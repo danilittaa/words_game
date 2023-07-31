@@ -20,30 +20,40 @@ export const createAnonymousUser = createAsyncThunk<
   AuthenticationResult,
   undefined,
   {}
->("users/createAnonymousUser", async function () {
-  const response = await axiosWithoutAuth.post("users/");
-  const data = response.data as AuthenticationResult;
-  addLocalStorage(data.auth);
-  return data;
+>("users/createAnonymousUser", async function (_, thunkAPI) {
+  try {
+    const response = await axiosWithoutAuth.post("users/");
+    const data = response.data as AuthenticationResult;
+    addLocalStorage(data.auth);
+    return data;
+  } catch (error) {
+    console.log(error);
+    return thunkAPI.rejectWithValue(error);
+  }
 });
 
 export const createUser = createAsyncThunk<
   AuthenticationResult,
   SignUpFormType,
   {}
->("users/createUser", async function (values: SignUpFormType) {
-  const bodyValues = {
-    ...values,
-    refresh_token: localStorage.getItem("refreshToken"),
-  };
-  const response = await axiosWithAuth.post("/users/register/", bodyValues);
-  updateLocalStorage(response.data.auth);
-  return response.data as AuthenticationResult;
+>("users/createUser", async function (values: SignUpFormType, thunkAPI) {
+  try {
+    const bodyValues = {
+      ...values,
+      refresh_token: localStorage.getItem("refreshToken"),
+    };
+    const response = await axiosWithAuth.post("/users/register/", bodyValues);
+    updateLocalStorage(response.data.auth);
+    return response.data as AuthenticationResult;
+  } catch (error) {
+    console.log(error);
+    return thunkAPI.rejectWithValue(error);
+  }
 });
 
 export const fetchMe = createAsyncThunk<User | undefined, undefined, {}>(
   "users/fetchMe",
-  async function () {
+  async function (_, thunkAPI) {
     if (!localStorage.getItem("accessToken")) {
       return emptyUser as User;
     }
@@ -52,9 +62,26 @@ export const fetchMe = createAsyncThunk<User | undefined, undefined, {}>(
       return response.data as User;
     } catch (error: any) {
       console.log(error);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
+
+export const updateSoundEffects = createAsyncThunk<
+  UserPreferences,
+  boolean,
+  {}
+>("users/updateSounds", async function (sound: boolean, thunkAPI) {
+  try {
+    const response = await axiosWithAuth.put("users/me/preferences/", {
+      sound_effects: sound,
+    });
+    return response.data as UserPreferences;
+  } catch (error) {
+    console.log(error);
+    return thunkAPI.rejectWithValue(error);
+  }
+});
 
 export const emptyUser: User = {
   id: 0,
@@ -79,11 +106,6 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // .addCase(postUser.pending, (state) => {
-      //   state.loading = true;
-      //   state.error = null;
-      //   state.user = emptyUser;
-      // })
       .addCase(createAnonymousUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.loading = false;
@@ -93,6 +115,9 @@ const userSlice = createSlice({
       })
       .addCase(createUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
+      })
+      .addCase(updateSoundEffects.fulfilled, (state, action) => {
+        state.user.preferences = action.payload;
       });
   },
 });
