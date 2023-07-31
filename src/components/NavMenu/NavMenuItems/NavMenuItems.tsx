@@ -1,4 +1,4 @@
-import { FC, useContext, useState } from "react";
+import { FC } from "react";
 import NavMenuItem from "./NavMenuItem/NavMenuItem";
 
 const NavMenuItems: FC = ({}) => {

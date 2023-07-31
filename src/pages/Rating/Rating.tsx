@@ -1,8 +1,7 @@
-import "./Rating.scss";
-import Level from "../../components/Level";
-import Achievements from "../../components/Achievements";
-import AllPlayers from "../../components/TopPlayers";
-import NavMenu from "components/NavMenu/NavMenu";
+import Level from "components/Level";
+import Achievements from "components/Achievements";
+import AllPlayers from "components/TopPlayers";
+import NavMenu from "components/NavMenu";
 import { useContext, useEffect } from "react";
 import Context from "context";
 

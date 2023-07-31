@@ -1,11 +1,12 @@
 import { FC, useEffect, useState } from "react";
-import "./RecentWords.scss";
 import RecentWordsItem from "./RecentWordsItem";
 import { axiosWithAuth } from "axiosConfig";
 import { Link } from "react-router-dom";
+import "./RecentWords.scss";
 
 const RecentWords: FC = () => {
   const [recentWords, setResentWords] = useState<RecentWord[]>([]);
+
   const fetchResentWords = async () => {
     const response = await axiosWithAuth.get("/recent-words/", {
       params: { page_size: 4 },
@@ -13,6 +14,7 @@ const RecentWords: FC = () => {
     const { results } = response.data as RecentWordPage;
     setResentWords(results);
   };
+
   useEffect(() => {
     if (localStorage.getItem("accessToken")) {
       fetchResentWords();

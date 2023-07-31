@@ -12,7 +12,6 @@
   }
   &__you {
     bottom: 63px;
-    // left: 25px; //if we use hints
     left: -95px;
   }
   &__photo {
@@ -74,7 +73,7 @@
     &__you {
       left: 50%;
       bottom: -50px;
-      transform: translate(calc(-50% - 50px), 0); // without hints
+      transform: translate(calc(-50% - 50px), 0);
     }
   }
   @media screen and (max-width: 435px) {

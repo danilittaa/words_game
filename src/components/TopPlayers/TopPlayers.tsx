@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import "./TopPlayers.scss";
 import PlayersItem from "components/Players/PlayersItem";
 import { axiosWithoutAuth } from "axiosConfig";
+import "./TopPlayers.scss";
 
 const AllPlayers = () => {
   const [allPlayers, setAllPlayers] = useState<BestPlayer[]>([]);

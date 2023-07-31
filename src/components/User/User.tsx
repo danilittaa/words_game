@@ -8,8 +8,6 @@ interface UserProps {
 }
 
 const User: FC<UserProps> = ({ type, username, health }) => {
-  console.log("healht", health);
-
   return (
     <div className={`user ${type === "enemy" ? "user__enemy" : "user__you"}`}>
       {type === "enemy" ? (

@@ -1,5 +1,4 @@
 import { useAppDispatch, useAppSelector } from "hook";
-import "./Settings.scss";
 import { useState } from "react";
 import SignIn from "components/Sign/SignIn/SignIn";
 import SignUp from "components/Sign/SignUp/SignUp";
@@ -10,13 +9,16 @@ import {
   logOut,
   updateSoundEffects,
 } from "store/userSlice";
+import "./Settings.scss";
 
 const SettingsComponent = () => {
   const { user } = useAppSelector((store) => store.user);
   const dispatch = useAppDispatch();
+
   const [isSignVisible, setIsSignVisible] = useState<boolean>(false);
   const [isLogIn, setIsLogIn] = useState<boolean>(true);
   const isAuth = !!user.email;
+
   const onCloseClick = () => {
     setIsSignVisible(false);
   };

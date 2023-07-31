@@ -1,11 +1,11 @@
 import { FC } from "react";
-import "../Sign.scss";
 import { useForm } from "react-hook-form";
 import { axiosWithoutAuth } from "axiosConfig";
 import { useAppDispatch } from "hook";
 import { addLocalStorage, fetchMe } from "store/userSlice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import "../Sign.scss";
 
 interface SignInProps {
   onCloseClick: () => void;
@@ -25,7 +25,6 @@ const SignIn: FC<SignInProps> = ({ onCloseClick, onRegisterClick }) => {
   const onSubmitLogIn = async (values: LogInFormType) => {
     try {
       const response: any = await axiosWithoutAuth.post("/auth/", values);
-      console.log(response);
       const data = response.data as Authorization;
       addLocalStorage(data);
       reset({ ...values });

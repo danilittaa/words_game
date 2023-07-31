@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import "./Players.scss";
 import PlayersItem from "./PlayersItem";
 import { axiosWithoutAuth } from "axiosConfig";
+import "./Players.scss";
 
 const Players = () => {
   const [bestPlayers, setBestPlayers] = useState<BestPlayer[]>([]);
+
   const fetchBestPlayers = async () => {
     try {
       const response = await axiosWithoutAuth.get("/users/best-players/", {
@@ -16,6 +17,7 @@ const Players = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     fetchBestPlayers();
   }, []);

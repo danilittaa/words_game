@@ -32,14 +32,11 @@ const createAxiosInstance = (
         try {
           const refreshToken = localStorage.getItem("refreshToken");
           if (!refreshToken) {
-            console.log("Refresh token not found");
             return;
           } else {
             const response = await axios.post(`${API_URL}auth/refresh/`, {
               refresh: refreshToken,
             });
-            console.log("TUTTT", response.data);
-
             localStorage.setItem("accessToken", response.data.access);
             localStorage.setItem("refreshToken", response.data.refresh);
 

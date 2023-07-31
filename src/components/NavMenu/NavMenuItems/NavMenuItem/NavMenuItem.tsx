@@ -1,7 +1,7 @@
 import { MaterialSymbol } from "react-material-symbols";
 import { Link } from "react-router-dom";
-import Context from "../../../../context";
 import { useContext } from "react";
+import Context from "context";
 
 interface NavMenuItemProps {
   url: navMenuItemType;

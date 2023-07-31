@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import "./NavMenu.scss";
 import NavMenuItems from "./NavMenuItems/NavMenuItems";
 
@@ -6,7 +6,7 @@ interface NavMenuItemProps {
   children: React.ReactNode;
 }
 
-const NavMenu: React.FC<NavMenuItemProps> = ({ children }) => {
+const NavMenu: FC<NavMenuItemProps> = ({ children }) => {
   return (
     <div className="nav-menu">
       <NavMenuItems />

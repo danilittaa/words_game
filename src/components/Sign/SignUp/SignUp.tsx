@@ -1,11 +1,11 @@
 import { FC } from "react";
-import "../Sign.scss";
 import { useForm } from "react-hook-form";
 import { useAppDispatch } from "hook";
 import { createAnonymousUser, createUser } from "store/userSlice";
 import { axiosWithAuth } from "axiosConfig";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import "../Sign.scss";
 
 interface SignUpProps {
   onLoginClick: () => void;

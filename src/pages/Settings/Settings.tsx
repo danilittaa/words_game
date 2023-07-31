@@ -1,5 +1,5 @@
 import SettingsComponent from "components/SettingsComponent";
-import NavMenu from "components/NavMenu/NavMenu";
+import NavMenu from "components/NavMenu";
 import { FC, useContext, useEffect } from "react";
 import Context from "context";
 

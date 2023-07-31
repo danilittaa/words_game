@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import "./App.scss";
 import "react-material-symbols/dist/rounded.css";
 import "react-toastify/dist/ReactToastify.css";
 import MainPage from "./pages/MainPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Settings from "./pages/Settings";
 import Rating from "./pages/Rating";
-import AllWords from "pages/AllWords/AllWords";
-import Battle from "pages/Battle/Battle";
+import AllWords from "pages/AllWords";
+import Battle from "pages/Battle";
 import Contex from "./context";
 import { useAppDispatch } from "hook";
 import { fetchMe } from "store/userSlice";
+import "./App.scss";
 
 const App: React.FC = () => {
   const [selectedPage, setSelectedPage] = useState(0);

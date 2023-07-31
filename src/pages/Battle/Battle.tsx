@@ -2,7 +2,6 @@ import BattleComponent from "components/BattleComponent";
 import LevelResult from "components/LevelResult";
 import User from "components/User";
 import { FC, useEffect, useState } from "react";
-import "./Battle.scss";
 import LoadingComponent from "components/LoadingComponent";
 import { axiosWithAuth } from "axiosConfig";
 import { useAppSelector } from "hook";
@@ -12,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { WEBSOCKET_URL } from "../../constants";
 import useSound from "use-sound";
 import { PlayFunction } from "use-sound/dist/types";
+import "./Battle.scss";
 
 const Battle: FC = () => {
   const { user } = useAppSelector((store) => store.user);
@@ -52,8 +52,6 @@ const Battle: FC = () => {
           socket.onmessage = (e) => {
             const message = JSON.parse(e.data);
             const property = Object.keys(message)[0];
-            console.log("key", property);
-            console.log(message);
 
             switch (property) {
               case "duel": {
@@ -80,11 +78,9 @@ const Battle: FC = () => {
               case "duel_outcome":
                 let play: PlayFunction;
                 if (message.duel_outcome.outcome === "victory") {
-                  console.log("win");
                   play = playWin;
                 }
                 if (message.duel_outcome.outcome === "defeat") {
-                  console.log("loose");
                   play = playLoose;
                 }
                 setTimeout(() => {
