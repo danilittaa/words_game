@@ -6,6 +6,8 @@ import { axiosWithAuth } from "axiosConfig";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "../Sign.scss";
+import { SignUpFormType } from "types/form";
+import { AvailableResult } from "types/available";
 
 interface SignUpProps {
   onLoginClick: () => void;

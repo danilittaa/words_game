@@ -1,5 +1,6 @@
 import { FC } from "react";
 import "./LevelResult.scss";
+import { DuelQuestionResult } from "types/duel";
 
 interface LevelResultProps {
   duelQuestionResult: DuelQuestionResult;

@@ -12,6 +12,13 @@ import { WEBSOCKET_URL } from "../../constants";
 import useSound from "use-sound";
 import { PlayFunction } from "use-sound/dist/types";
 import "./Battle.scss";
+import {
+  Duel,
+  DuelOpponentChoice,
+  DuelOutcome,
+  DuelQuestion,
+  DuelQuestionResult,
+} from "types/duel";
 
 const Battle: FC = () => {
   const { user } = useAppSelector((store) => store.user);

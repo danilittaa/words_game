@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Translation, Word } from "types/word";
 
 interface RecentWordsItemProps {
   word: Word;

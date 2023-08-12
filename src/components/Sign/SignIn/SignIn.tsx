@@ -6,6 +6,8 @@ import { addLocalStorage, fetchMe } from "store/userSlice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "../Sign.scss";
+import { LogInFormType } from "types/form";
+import { Authorization } from "types/user";
 
 interface SignInProps {
   onCloseClick: () => void;

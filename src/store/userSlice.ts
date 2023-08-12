@@ -1,5 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { axiosWithAuth, axiosWithoutAuth } from "../axiosConfig";
+import {
+  AuthenticationResult,
+  User,
+  UserPreferences,
+  UserState,
+} from "types/user";
+import { SignUpFormType } from "types/form";
 
 export function deleteLocalStorage() {
   localStorage.removeItem("accessToken");

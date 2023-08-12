@@ -15,7 +15,7 @@ export type DuelOpponentChoice = {
   date: number;
 };
 
-type DuelQuestion = {
+export type DuelQuestion = {
   id: number;
   number: number;
   text: string;
@@ -24,40 +24,40 @@ type DuelQuestion = {
   answers: DuelQuestionAnswerPair;
 };
 
-type DuelQuestionChoice = {
+export type DuelQuestionChoice = {
   id: number;
   text: string;
   meaning: string;
 };
 
-type DuelQuestionAnswer = {
+export type DuelQuestionAnswer = {
   id: number;
   choice: DuelQuestionChoice;
   correct: boolean;
 };
 
-type DuelQuestionResult = {
+export type DuelQuestionResult = {
   question_id: number;
   answers: DuelQuestionAnswerPair;
   correct_choice: DuelQuestionChoice;
   status: DuelPlayerStatusPair;
 };
 
-type DuelQuestionAnswerPair = {
+export type DuelQuestionAnswerPair = {
   me: DuelQuestionAnswer;
   opponent: DuelQuestionAnswer;
 };
 
-type DuelPlayerStatusPair = {
+export type DuelPlayerStatusPair = {
   me: DuelPlayersStatus;
   opponent: DuelPlayersStatus;
 };
 
-type DuelPlayersStatus = {
+export type DuelPlayersStatus = {
   hp: number;
 };
 
-type DuelOutcome = {
+export type DuelOutcome = {
   outcome: "victory" | "defeat" | "draw";
   exp_gained: number;
   total_exp: number;
@@ -65,14 +65,14 @@ type DuelOutcome = {
   correct_answers: number;
 };
 
-type UpdatedData =
+export type UpdatedData =
   | Duel
   | DuelQuestion
   | DuelOpponentChoice
   | DuelQuestionResult
   | DuelOutcome;
 
-type DuelMessage = {
+export type DuelMessage = {
   duel: Duel;
   duel_question: DuelQuestion;
   duel_opponent_choice: DuelOpponentChoice;

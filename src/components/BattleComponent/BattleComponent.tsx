@@ -3,6 +3,7 @@ import "./BattleComponent.scss";
 import { axiosWithAuth } from "axiosConfig";
 import useSound from "use-sound";
 import { useAppSelector } from "hook";
+import { Duel, DuelQuestion, DuelQuestionChoice } from "types/duel";
 
 interface BattleComponentProps {
   duelQuestionMessage: DuelQuestion | undefined;

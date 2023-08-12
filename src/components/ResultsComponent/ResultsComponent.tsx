@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAppSelector } from "hook";
 import useSound from "use-sound";
 import "./ResultsComponent.scss";
+import { DuelOutcome } from "types/duel";
 
 interface ResultsComponentProps {
   outcome: DuelOutcome;

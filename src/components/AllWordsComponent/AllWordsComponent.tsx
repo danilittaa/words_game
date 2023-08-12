@@ -3,6 +3,7 @@ import "./AllWords.scss";
 import Word from "components/Word/Word";
 import { axiosWithAuth } from "axiosConfig";
 import { toast } from "react-toastify";
+import { RecentWord, RecentWordPage } from "types/word";
 
 const AllWordsComponent = () => {
   const [pageNum, setPageNum] = useState<number>(1);

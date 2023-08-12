@@ -3,6 +3,7 @@ import RecentWordsItem from "./RecentWordsItem";
 import { axiosWithAuth } from "axiosConfig";
 import { Link } from "react-router-dom";
 import "./RecentWords.scss";
+import { RecentWord, RecentWordPage } from "types/word";
 
 const RecentWords: FC = () => {
   const [recentWords, setResentWords] = useState<RecentWord[]>([]);

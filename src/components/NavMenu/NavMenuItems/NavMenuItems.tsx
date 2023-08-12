@@ -1,5 +1,6 @@
 import { FC } from "react";
 import NavMenuItem from "./NavMenuItem/NavMenuItem";
+import { navMenuItemType } from "types/types";
 
 const NavMenuItems: FC = ({}) => {
   const navMenuItemUrl: Array<navMenuItemType> = [
