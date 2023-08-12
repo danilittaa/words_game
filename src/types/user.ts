@@ -1,10 +1,10 @@
-type UserPreferences = {
+export type UserPreferences = {
   music: boolean;
   sound_effects: boolean;
   lang_code: string;
 };
 
-type User = {
+export type User = {
   id: number;
   username: string;
   email: string;
@@ -12,18 +12,18 @@ type User = {
   preferences: UserPreferences;
 };
 
-type UserState = {
+export type UserState = {
   user: User;
   loading: boolean;
   error: string | null;
 };
 
-type Authorization = {
+export type Authorization = {
   refresh: string;
   access: string;
 };
 
-type AuthenticationResult = {
+export type AuthenticationResult = {
   auth: Authorization;
   user: User;
 };

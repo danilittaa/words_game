@@ -1,3 +1,3 @@
-type AvailableResult = {
+export type AvailableResult = {
   available: boolean;
 };

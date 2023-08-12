@@ -1,17 +1,17 @@
-type Duel = {
+export type Duel = {
   id: number;
   started: number;
   opponent: DuelOpponent;
   questions: DuelQuestion[];
 };
 
-type DuelOpponent = {
+export type DuelOpponent = {
   id: number;
   username: string;
   exp: number;
 };
 
-type DuelOpponentChoice = {
+export type DuelOpponentChoice = {
   date: number;
 };
 

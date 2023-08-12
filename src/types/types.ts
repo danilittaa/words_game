@@ -1,1 +1,1 @@
-type navMenuItemType = "" | "settings" | "star" | "book";
+export type navMenuItemType = "" | "settings" | "star" | "book";
